@@ -1,7 +1,12 @@
 import express from 'express';
+import { errorHandler } from './middlewares/errorHandler';
+
+import router from './routes';
 
 const app = express();
 
-app.get('/', (req, res) => res.send('<h1>Olá, mundo!</h1>'));
+app.use(express.json());
+app.use('/', router);
+app.use(errorHandler);
 
 export default app;

@@ -7,13 +7,16 @@
   "license": "MIT",
   "scripts": {
     "start": "ts-node src/index.ts",
-    "start:dev": "ts-node-dev  --respawn -- src/index.ts"
+    "start:dev": "ts-node-dev  --respawn -- src/index.ts",
+    "test": "jest"
   },
   "dependencies": {
+    "@types/supertest": "^2.0.10",
     "eslint-plugin-jest": "^24.0.2",
     "eslint-plugin-node": "^11.1.0",
     "express": "^4.17.1",
     "jest": "^26.4.2",
+    "supertest": "^5.0.0",
     "ts-jest": "^26.4.0",
     "ts-node": "^9.0.0",
     "tsc": "^1.20150623.0",
