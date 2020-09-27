@@ -1,10 +1,11 @@
 import app from '../app';
 import { InvalidParameterError } from '../error/InvalidParameterError';
-import { post } from '../helper/test-request';
+import { post } from '../helper/httpTestingRequest';
 
 describe('signup controller', () => {
     
     it('should return a status code when call a route', async () => {
+    
         const body = {
             email: 'any@mail.com',
             password: 'Str0ngP4sSworD',
@@ -14,7 +15,9 @@ describe('signup controller', () => {
         expect(response).toHaveProperty('statusCode');
     });
 
+
     it('should return error when call with empty email', async () => {
+    
         const body = {
             password: 'Str0ngP4sSworD',
         }
@@ -28,6 +31,7 @@ describe('signup controller', () => {
 
 
     it('should return error when call with empty password', async () => {
+    
         const body = {
             email: 'any@mail.com'
         }
@@ -39,7 +43,9 @@ describe('signup controller', () => {
         expect(response.error.text).toBe(JSON.stringify(error.getBody()));
     });
 
+    
     it('should return error when call with an invalid email', async () => {
+    
         const body = {
             email: 'invalid.email.com',
             password: 'Str0ngP4sSworD',
