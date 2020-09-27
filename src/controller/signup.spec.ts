@@ -1,6 +1,5 @@
 import app from '../app';
 import { InvalidParameterError } from '../error/InvalidParameterError';
-import { badRequest } from '../helper/http-errors';
 import { post } from '../helper/test-request';
 
 describe('signup controller', () => {
@@ -40,14 +39,14 @@ describe('signup controller', () => {
         expect(response.error.text).toBe(JSON.stringify(error.getBody()));
     });
 
-    it('should return error when call with invalid email', async () => {
+    it('should return error when call with an invalid email', async () => {
         const body = {
-            email: 'any@mail.com',
+            email: 'invalid.email.com',
             password: 'Str0ngP4sSworD',
         }
 
         const response = await post(app, '/signup', body);
-        const error = new InvalidParameterError('password'); 
+        const error = new InvalidParameterError('invalid email format'); 
 
         expect(response.error.status).toBe(error.getStatusCode());
         expect(response.error.text).toBe(JSON.stringify(error.getBody()));
